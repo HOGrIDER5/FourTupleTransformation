@@ -2,7 +2,7 @@
 FourTupleTransformation.java 
 Created by: Lucas Noritomi-Hartwig
 Created on: April 17, 2020
-Last edited on: April 17, 2020
+Last edited on: April 20, 2020
 Starting with a four-tuple of nonnegative integers (a,b,c,d), this program 
 repeatedly applies this rule: (a,b,c,d) → (|a−b|,|b−c|,|c−d|,|d−a|).
 That is, it replaces a by |a−b|, b by |b−c|, c by |c−d|, and d by |d−a|.
@@ -31,21 +31,26 @@ public class FourTupleTransformation {
             ArrayList<Integer> numbers = new ArrayList();
             try {
                 for(String stringValue : numbersString) {
-                    //Converting String Array to Integers and storing them in numbers ArrayList
+                    // Converting String Array to Integers and storing them in numbers ArrayList
                     numbers.add(Integer.parseInt(stringValue));
                 }
-                numbers.add(0); // Adding step counter to numbers ArrayList
-                transform(numbers); // Calling method to transform four-tuple
-                
-                // Creating substring for proper output format
-                String output = numbers.toString().substring(1, numbers.toString().length() - 4);
-                
-                // Output
-                System.out.println("Number of recursion = " + numbers.get(4) + "(" + output + ")");
+                if (numbers.get(0) >= 0 && numbers.get(1) >= 0 && numbers.get(2) >= 0 &&
+                        numbers.get(3) >= 0) {
+                    numbers.add(0); // Adding step counter to numbers ArrayList
+                    transform(numbers); // Calling method to transform four-tuple
+
+                    // Creating substring for proper output format
+                    String output = numbers.toString().substring(1, numbers.toString().length() - 4);
+
+                    // Output
+                    System.out.println("Number of recursion = " + numbers.get(4) + "(" + output + ")");
+                } else { // Exception in case not all numbers are non-negative
+                    System.out.println("Please input a four-tuple of non-negative integers."); 
+                }
             } catch(NumberFormatException nfe) { // Exception in case not all separations are parsable
                 System.out.println("Please input a four-tuple of non-negative integers.");
             }          
-        } else { //Exception in case there were not four separate elements inputted
+        } else { // Exception in case there were not four separate elements inputted
             System.out.println("Please input a four-tuple of non-negative integers.");
         }
     }
