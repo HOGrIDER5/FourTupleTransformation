@@ -10,7 +10,7 @@ The program also prints the number of steps until either a or b or c or d reach 
 */
 package fourtupletransformation;
 
-import static java.lang.Math.abs;;
+import static java.lang.Math.abs;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
